@@ -66,7 +66,7 @@ public class Main {
         manager.deleteTask(task2.getId());
         manager.deleteEpic(epic2.getId());
 
-        System.out.println("\n=ПОСЛЕ УДАЛЕНИЯ");
+        System.out.println("\nzПОСЛЕ УДАЛЕНИЯ");
 
         System.out.println(manager.getTaskById(task1.getId()));
         System.out.println(manager.getTaskById(task2.getId())); // null
