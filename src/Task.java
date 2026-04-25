@@ -25,6 +25,11 @@ public class Task {
     public Progress getProgress() {
         return progress;
     }
+
+    public void setProgress(Progress progress) {
+        this.progress = progress;
+    }
+
     public int getId(){
         return id;
     }

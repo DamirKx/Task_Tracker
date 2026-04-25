@@ -32,6 +32,7 @@ public class Manager {
             subtasks.put(id, subTask);
             Epic epic = epics.get(subTask.getEpicId());
             epic.addSubtaskId(id);
+            updateEpicStatus(subTask.getEpicId());
             id++;
         } else {
             System.out.println("Не найден эпик");
@@ -60,6 +61,7 @@ public class Manager {
             Epic epic = epics.get(subTask.getEpicId());
             epic.removeSubtaskId(id);
             subtasks.remove(id);
+            updateEpicStatus(subTask.getEpicId());
         } else {
             System.out.println("Такой подзадачи нет");
         }
@@ -83,9 +85,16 @@ public class Manager {
 
     public void updateSubtask(int id, SubTask subTask){
         if (subtasks.containsKey(id)){
-            Epic epic = epics.get(subTask.getEpicId());
-            subtasks.replace(id, subTask);
+            SubTask oldSubtask = subtasks.get(id);
 
+            if (oldSubtask != subTask){
+                Epic epic = epics.get(oldSubtask.getEpicId());
+                epic.removeSubtaskId(id);
+                Epic newEpic = epics.get(subTask.getEpicId());
+                newEpic.addSubtaskId(subTask.getId());
+            }
+            subtasks.put(id, subTask);
+            updateEpicStatus(subTask.getEpicId());
         }
     }
 
