@@ -53,8 +53,15 @@ public class Manager {
         }
     }
 
-    public void deleteSubtask(SubTask subTask){
-
+    public void deleteSubtask(int id){
+        if (subtasks.containsKey(id)){
+            SubTask subTask = subtasks.get(id);
+            Epic epic = epics.get(subTask.getEpicId());
+            epic.removeSubtaskId(id);
+            subtasks.remove(id);
+        } else {
+            System.out.println("Такой подзадачи нет");
+        }
     }
 
     public void updateTask(int id, Task task){
@@ -73,6 +80,14 @@ public class Manager {
         }
     }
 
+    public void updateSubtask(int id, SubTask subTask){
+        if (subtasks.containsKey(id)){
+            Epic epic = epics.get(subTask.getEpicId());
+            subtasks.replace(id, subTask);
+
+        }
+    }
+
     public void clearTasks(){
         tasks.clear();
         System.out.println("Все задачи удалены!");
@@ -84,7 +99,15 @@ public class Manager {
 
     }
 
+    public void clearAll(){
+        tasks.clear();
+        epics.clear();
+        subtasks.clear();
+    }
+
+    public void printSubtasksEpic(){
 
 
+    }
 
 }
