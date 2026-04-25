@@ -108,6 +108,29 @@ public class Manager {
     public void printSubtasksEpic(){
 
 
+    public SubTask getSubtaskById(int id){
+        return subtasks.get(id);
+    }
+
+    public void updateEpicStatus(int epicId){
+        boolean allDone = true;
+
+        List<Integer> subtaskIds= epics.get(epicId).getSubtaskIds();
+
+        for (int i = 0; i < subtaskIds.size(); i++){
+            SubTask subTask = subtasks.get(subtaskIds.get(i));
+            if (!subTask.getProgress().equals(Progress.DONE)){
+                allDone = false;
+            }
+        }
+
+        if (subtaskIds.isEmpty()){
+            epics.get(epicId).setProgress(Progress.NEW);
+        } else if (allDone) {
+            epics.get(epicId).setProgress(Progress.DONE);
+        } else {
+            epics.get(epicId).setProgress(Progress.IN_PROGRESS);
+        }
     }
 
 }
