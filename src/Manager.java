@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Manager {
@@ -66,7 +67,7 @@ public class Manager {
 
     public void updateTask(int id, Task task){
         if (tasks.containsKey(id)){
-            tasks.replace(id, task);
+            tasks.put(id, task);
         } else {
             System.out.println("Введите правильный идентификатор");
         }
@@ -74,7 +75,7 @@ public class Manager {
 
     public void updateEpic(int id, Epic epic){
         if (epics.containsKey(id)) {
-            epics.replace(id, epic);
+            epics.put(id, epic);
         } else {
             System.out.println("Такого эпика нет");
         }
@@ -105,8 +106,14 @@ public class Manager {
         subtasks.clear();
     }
 
-    public void printSubtasksEpic(){
+    public Task getTaskById(int id){
+        return tasks.get(id);
 
+    }
+
+    public Epic getEpicById(int id){
+        return epics.get(id);
+    }
 
     public SubTask getSubtaskById(int id){
         return subtasks.get(id);
