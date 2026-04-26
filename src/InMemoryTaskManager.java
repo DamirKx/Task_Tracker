@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -153,6 +154,7 @@ public class InMemoryTaskManager implements TaskManager{
 
     public void updateEpicStatus(int epicId){
         boolean allDone = true;
+        boolean allNew = true;
 
         List<Integer> subtaskIds= epics.get(epicId).getSubtaskIds();
 
@@ -161,9 +163,12 @@ public class InMemoryTaskManager implements TaskManager{
             if (!subTask.getProgress().equals(Progress.DONE)){
                 allDone = false;
             }
+            if (!subTask.getProgress().equals(Progress.NEW)) {
+                allNew = false;
+            }
         }
 
-        if (subtaskIds.isEmpty()){
+        if (subtaskIds.isEmpty() || allNew){
             epics.get(epicId).setProgress(Progress.NEW);
         } else if (allDone) {
             epics.get(epicId).setProgress(Progress.DONE);
@@ -173,7 +178,9 @@ public class InMemoryTaskManager implements TaskManager{
     }
 
     @Override
-    public void getHistory() {
+    public List<Task> getHistory() {
+        List<Task> history = new ArrayList<>();
 
+        return history;
     }
 }

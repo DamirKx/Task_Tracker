@@ -1,6 +1,8 @@
+import java.util.List;
+
 public interface TaskManager {
 
-    public void getHistory();
+    public List<Task> getHistory();
 
     public void createTask(Task task);
     public void createEpic(Epic epic);
