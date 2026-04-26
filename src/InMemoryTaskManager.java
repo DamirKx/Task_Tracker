@@ -120,6 +120,15 @@ public class InMemoryTaskManager implements TaskManager{
     }
 
     @Override
+    public void clearSubtask(int epicId) {
+        Epic epic = epics.get(epicId);
+        for(Integer subtaskId : epic.getSubtaskIds()){
+            subtasks.remove(subtaskId);
+        }
+        System.out.println("Все подзадачи эпика удалены");
+    }
+
+    @Override
     public void clearAll(){
         tasks.clear();
         epics.clear();

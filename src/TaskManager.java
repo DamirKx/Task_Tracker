@@ -16,6 +16,7 @@ public interface TaskManager {
 
     public void clearTasks();
     public void clearEpics();
+    public void clearSubtask(int epicId);
     public void clearAll();
 
     public Task getTaskById(int id);
