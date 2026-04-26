@@ -13,19 +13,21 @@ public class InMemoryTaskManager implements TaskManager{
     public int getId() {
         return id;
     }
-
+    @Override
     public void createTask(Task task){
         task.setId(id);
         tasks.put(id, task);
         id++;
     }
-    
+
+    @Override
     public void createEpic(Epic epic){
         epic.setId(id);
         epics.put(id, epic);
         id++;
     }
 
+    @Override
     public void createSubtask(SubTask subTask){
         if (epics.containsKey(subTask.getEpicId())){
             subTask.setId(id);
@@ -39,6 +41,7 @@ public class InMemoryTaskManager implements TaskManager{
         }
     }
 
+    @Override
     public void deleteTask(int id){
         if (tasks.containsKey(id)){
             tasks.remove(id);
@@ -47,6 +50,7 @@ public class InMemoryTaskManager implements TaskManager{
         }
     }
 
+    @Override
     public void deleteEpic(int id){
         if (epics.containsKey(id)) {
             epics.remove(id);
@@ -55,6 +59,7 @@ public class InMemoryTaskManager implements TaskManager{
         }
     }
 
+    @Override
     public void deleteSubtask(int id){
         if (subtasks.containsKey(id)){
             SubTask subTask = subtasks.get(id);
@@ -67,6 +72,7 @@ public class InMemoryTaskManager implements TaskManager{
         }
     }
 
+    @Override
     public void updateTask(int id, Task task){
         if (tasks.containsKey(id)){
             tasks.put(id, task);
@@ -75,6 +81,7 @@ public class InMemoryTaskManager implements TaskManager{
         }
     }
 
+    @Override
     public void updateEpic(int id, Epic epic){
         if (epics.containsKey(id)) {
             epics.put(id, epic);
@@ -83,6 +90,7 @@ public class InMemoryTaskManager implements TaskManager{
         }
     }
 
+    @Override
     public void updateSubtask(int id, SubTask subTask){
         if (subtasks.containsKey(id)){
             SubTask oldSubtask = subtasks.get(id);
@@ -98,32 +106,38 @@ public class InMemoryTaskManager implements TaskManager{
         }
     }
 
+    @Override
     public void clearTasks(){
         tasks.clear();
         System.out.println("Все задачи удалены!");
     }
 
-    public void clearEpic(){
+    @Override
+    public void clearEpics(){
         epics.clear();
         System.out.println("Все эпики удалены!");
 
     }
 
+    @Override
     public void clearAll(){
         tasks.clear();
         epics.clear();
         subtasks.clear();
     }
 
+    @Override
     public Task getTaskById(int id){
         return tasks.get(id);
 
     }
 
+    @Override
     public Epic getEpicById(int id){
         return epics.get(id);
     }
 
+    @Override
     public SubTask getSubtaskById(int id){
         return subtasks.get(id);
     }
