@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
 
-        Manager manager = new Manager();
+        InMemoryTaskManager manager = new InMemoryTaskManager();
 
         // 1. Обычные задачи
         Task task1 = new Task("Задача 1", "Описание 1", Progress.NEW);
@@ -69,9 +69,9 @@ public class Main {
         System.out.println("\nПОСЛЕ УДАЛЕНИЯ");
 
         System.out.println(manager.getTaskById(task1.getId()));
-        System.out.println(manager.getTaskById(task2.getId())); // null
+        System.out.println(manager.getTaskById(task2.getId()));
 
         System.out.println(manager.getEpicById(epic1.getId()));
-        System.out.println(manager.getEpicById(epic2.getId())); // null
+        System.out.println(manager.getEpicById(epic2.getId()));
     }
 }

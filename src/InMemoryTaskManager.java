@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Manager {
+public class InMemoryTaskManager implements TaskManager{
 
     public int id = 0;
 
@@ -149,4 +149,8 @@ public class Manager {
         }
     }
 
+    @Override
+    public void getHistory() {
+
+    }
 }
