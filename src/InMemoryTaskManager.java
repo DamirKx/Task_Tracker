@@ -54,6 +54,10 @@ public class InMemoryTaskManager implements TaskManager{
     @Override
     public void deleteEpic(int id){
         if (epics.containsKey(id)) {
+            Epic epic = epics.get(id);
+            for (Integer subtaskId : epic.getSubtaskIds()){
+                subtasks.remove(subtaskId);
+            }
             epics.remove(id);
         } else {
             System.out.println("Такого эпика нет");
