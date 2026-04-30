@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class InMemoryTaskManager implements TaskManager{
 
+
     public int id = 0;
 
     private Map<Integer, Task> tasks= new HashMap<>();
@@ -196,10 +197,4 @@ public class InMemoryTaskManager implements TaskManager{
         }
     }
 
-    @Override
-    public List<Task> getHistory() {
-        List<Task> history = new ArrayList<>();
-
-        return history;
-    }
 }
