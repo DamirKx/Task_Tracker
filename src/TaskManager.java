@@ -2,6 +2,8 @@ import java.util.List;
 
 public interface TaskManager {
 
+    public List<Task> getHistory();
+
     public void createTask(Task task);
     public void createEpic(Epic epic);
     public void createSubtask(SubTask subTask);
